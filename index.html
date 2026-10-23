@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102a43">
+<title>VIH Clínico | Guía interactiva para estudiantes</title>
+<style>
+:root{--navy:#102a43;--blue:#176b87;--teal:#087e8b;--mint:#e7f6f4;--paper:#f4f7fa;--ink:#182b3a;--muted:#627487;--line:#d9e2ec;--white:#fff;--amber:#fff3d6;--red:#9b2c2c;--green:#176b4d}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{background:linear-gradient(120deg,#102a43,#176b87);color:white;padding:32px max(22px,calc((100% - 1180px)/2)) 28px}
+header .eyebrow{letter-spacing:.13em;text-transform:uppercase;font-size:.75rem;font-weight:800;color:#a9e4e4}
+header h1{font-size:clamp(1.8rem,4vw,3rem);line-height:1.08;margin:10px 0}
+header p{max-width:760px;color:#e1edf4;margin:0}
+.shell{max-width:1180px;margin:auto;padding:22px}
+.notice{border:1px solid #e9cf88;background:var(--amber);padding:14px 16px;border-radius:12px;margin-bottom:18px}
+.layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:22px;align-items:start}
+nav{position:sticky;top:12px;background:white;border:1px solid var(--line);padding:12px;border-radius:16px}
+nav button{display:block;width:100%;text-align:left;background:transparent;border:0;border-radius:9px;padding:10px 12px;color:var(--ink);font-weight:650;cursor:pointer}
+nav button.active,nav button:hover{background:var(--mint);color:#075c67}
+main{min-width:0}.panel{display:none;background:white;border:1px solid var(--line);border-radius:16px;padding:clamp(18px,3vw,30px);box-shadow:0 8px 26px #102a4309}
+.panel.active{display:block}.panel h2{margin-top:0;font-size:1.6rem}.panel h3{margin-bottom:6px}.sub{color:var(--muted);margin-top:-5px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.field{margin:14px 0}.field label,.field .label{display:block;font-weight:700;margin-bottom:6px}
+input,select,textarea{width:100%;font:inherit;border:1px solid #b8c7d6;border-radius:9px;padding:10px 11px;background:white;color:var(--ink)}
+input[type=checkbox]{width:auto;transform:scale(1.15);margin-right:8px}
+.check{display:block;padding:10px 12px;border:1px solid var(--line);border-radius:9px;margin:8px 0;font-weight:500}
+button.action{background:var(--teal);color:white;border:0;padding:11px 16px;border-radius:10px;font:inherit;font-weight:750;cursor:pointer;margin:5px 5px 5px 0}
+button.secondary{background:#e8eff5;color:var(--navy)}button.danger{background:var(--red)}
+.result{padding:15px;border-radius:11px;background:var(--mint);border:1px solid #b9e3de;margin-top:14px}
+.result.warn{background:var(--amber);border-color:#e9cf88}.result.danger{background:#fff0f0;border-color:#e6baba}
+.steps{counter-reset:step;list-style:none;padding:0}.steps li{counter-increment:step;padding:12px 12px 12px 48px;position:relative;border-bottom:1px solid var(--line)}
+.steps li:before{content:counter(step);position:absolute;left:7px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--mint);color:#075c67;display:grid;place-items:center;font-weight:800}
+.progress{height:8px;background:#e5edf3;border-radius:20px;overflow:hidden;margin:12px 0}.progress span{display:block;height:100%;background:var(--teal);width:0;transition:width .2s}
+.small{font-size:.88rem;color:var(--muted)}.tag{display:inline-block;border-radius:99px;padding:3px 9px;background:#e8eff5;font-size:.78rem;font-weight:750}
+footer{max-width:1180px;margin:0 auto;padding:0 22px 30px;color:var(--muted);font-size:.85rem}
+a{color:#075c82}hr{border:0;border-top:1px solid var(--line);margin:22px 0}
+@media(max-width:800px){.layout{grid-template-columns:1fr}nav{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px}.grid2{grid-template-columns:1fr}.shell{padding:14px}}
+@media print{header{background:white;color:black;padding:15px}header p,header .eyebrow{color:#333}.layout{display:block}nav,.action,.notice{display:none!important}.panel{display:block!important;box-shadow:none;border:0;page-break-inside:avoid}.shell{padding:0}.panel h2{margin-top:20px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="eyebrow">Recurso educativo · Medicina</div>
+ <h1>VIH Clínico</h1>
+ <p>Guía interactiva de aprendizaje para orientar la identificación, confirmación diagnóstica, vinculación a atención y seguimiento de personas con VIH. Basada en los materiales de referencia proporcionados, con recordatorios de seguridad clínica.</p>
+</header>
+<div class="shell">
+ <div class="notice"><strong>Importante:</strong> herramienta educativa, no expediente clínico ni sustituto de protocolos institucionales. El Manual mexicano de vigilancia incluido en los materiales es de <strong>2012</strong>; verifica la normativa vigente, el algoritmo diagnóstico local y las indicaciones del servicio de infectología/Clínica de VIH. No introduzcas nombres, CURP, teléfonos ni otros datos identificables. No guarda información en un servidor.</div>
+ <div class="layout">
+  <nav aria-label="Secciones">
+   <button class="active" data-tab="inicio">01 · Inicio y ruta</button>
+   <button data-tab="deteccion">02 · Detección y exposición</button>
+   <button data-tab="diagnostico">03 · Algoritmo diagnóstico</button>
+   <button data-tab="vinculacion">04 · Primeros pasos</button>
+   <button data-tab="seguimiento">05 · Seguimiento</button>
+   <button data-tab="caso">06 · Caso de práctica</button>
+   <button data-tab="fuentes">Fuentes y límites</button>
+  </nav>
+  <main>
+   <section id="inicio" class="panel active">
+    <span class="tag">Ruta de atención</span><h2>Protocolo orientativo</h2>
+    <p class="sub">Avanza por las secciones según el escenario clínico. Cada decisión debe confirmarse con el personal responsable y el protocolo vigente.</p>
+    <ol class="steps">
+     <li><strong>Acogida y confidencialidad.</strong> Explica el objetivo, solicita consentimiento informado según normativa local, evita juicios y ofrece un espacio privado.</li>
+     <li><strong>Valorar exposición y urgencias.</strong> Si hubo exposición potencial en las últimas 72 horas, deriva inmediatamente para valorar profilaxis posexposición (PEP); no esperes una prueba para solicitar valoración.</li>
+     <li><strong>Ofrecer prueba de VIH.</strong> Explica ventana diagnóstica, posibles resultados y el plan de entrega. Un tamizaje reactivo no equivale por sí solo a diagnóstico confirmado.</li>
+     <li><strong>Confirmar según algoritmo vigente.</strong> Sigue el algoritmo validado por el laboratorio y las normas locales; gestiona resultados discordantes o indeterminados con el laboratorio/servicio experto.</li>
+     <li><strong>Vincular a atención y tratamiento.</strong> Facilita valoración clínica, estudios basales, inicio de TAR oportuno por el equipo tratante y apoyo psicosocial.</li>
+     <li><strong>Dar seguimiento.</strong> Evalúa carga viral, CD4, adherencia, efectos adversos, comorbilidades, prevención y barreras para acudir a consultas.</li>
+    </ol>
+    <div class="result"><strong>Principios transversales</strong><br>Consentimiento · confidencialidad · trato digno y no discriminatorio · decisiones compartidas · documentación segura · referencia oportuna.</div>
+    <button class="action" onclick="go('deteccion')">Comenzar evaluación →</button>
+   </section>
+
+   <section id="deteccion" class="panel">
+    <h2>Detección y valoración inicial</h2><p class="sub">Registra solo información ficticia o no identificable para practicar el razonamiento.</p>
+    <div class="field"><label for="exposure">¿Existe exposición potencial reciente?</label><select id="exposure"><option value="">Selecciona…</option><option value="72">Sí, hace 72 horas o menos</option><option value="old">Sí, hace más de 72 horas</option><option value="no">No identificada / consulta de rutina</option><option value="unknown">No está claro</option></select></div>
+    <div class="field"><label for="reason">Motivo de la prueba (puede seleccionar el más relevante)</label><select id="reason"><option>Solicitud informada de la persona</option><option>Exposición sexual sin barrera o falla del método</option><option>Compartir agujas o material potencialmente contaminado</option><option>Embarazo o planificación reproductiva</option><option>ITS actual o previa / pareja con VIH</option><option>Exposición ocupacional a sangre</option><option>Síntomas o condición clínica que amerita evaluación</option><option>Otro / no especificado</option></select></div>
+    <div class="field"><label for="consent"><input id="consent" type="checkbox"> Se explicó la prueba, su alcance, confidencialidad y se obtuvo consentimiento conforme al protocolo local.</label></div>
+    <div class="field"><label for="privacy"><input id="privacy" type="checkbox"> Se confirmó un entorno privado y una forma segura de comunicar resultados.</label></div>
+    <button class="action" onclick="evaluateScreen()">Generar orientación</button>
+    <div id="screenResult" aria-live="polite"></div>
+    <hr><h3>Preguntas clínicas útiles</h3>
+    <ul><li>Fecha y tipo de exposición, sin asumir riesgo por identidad o preferencia sexual.</li><li>Uso de PrEP/PEP, medicamentos actuales y antecedentes de pruebas.</li><li>Posibilidad de embarazo, otras ITS y necesidades de salud sexual.</li><li>Necesidades de apoyo, seguridad, idioma y accesibilidad.</li></ul>
+   </section>
+
+   <section id="diagnostico" class="panel">
+    <h2>Algoritmo diagnóstico: interpretar sin sobrediagnosticar</h2>
+    <p class="sub">Este módulo enseña la lógica general; no reemplaza el algoritmo nacional/institucional vigente ni las instrucciones del laboratorio.</p>
+    <div class="field"><label for="test">Resultado inicial de tamizaje</label><select id="test"><option value="">Selecciona…</option><option value="nonreactive">No reactivo</option><option value="reactive">Reactivo</option><option value="invalid">Inválido / indeterminado</option></select></div>
+    <div class="field"><label for="window">¿Hay exposición reciente o sospecha de infección aguda?</label><select id="window"><option value="">Selecciona…</option><option value="yes">Sí / posible periodo de ventana</option><option value="no">No identificada</option></select></div>
+    <div class="field"><label for="confirm">Si el tamizaje fue reactivo, estado del algoritmo confirmatorio</label><select id="confirm"><option value="">No aplica / aún no realizado</option><option value="positive">Criterios de confirmación cumplidos según algoritmo vigente</option><option value="negative">Prueba suplementaria/confirmatoria negativa o discordante</option><option value="indeterminate">Indeterminado</option></select></div>
+    <button class="action" onclick="interpretTest()">Interpretar escenario</button><div id="testResult" aria-live="polite"></div>
+    <div class="result warn"><strong>Ventana diagnóstica:</strong> un resultado no reactivo no descarta siempre una infección reciente. La prueba adecuada y el momento para repetirla dependen del tipo de ensayo, fecha de exposición y evaluación clínica. Ante sospecha de infección aguda, consulta al laboratorio/servicio clínico para pruebas apropiadas, que pueden incluir detección de antígeno/anticuerpos o ARN del VIH.</div>
+   </section>
+
+   <section id="vinculacion" class="panel">
+    <h2>Tras un diagnóstico confirmado: vinculación</h2>
+    <p class="sub">Lista educativa de tareas para revisar con el equipo tratante; no es una orden médica.</p>
+    <div id="linkChecklist">
+     <label class="check"><input type="checkbox"> Comunicar el resultado en privado, con lenguaje claro y apoyo emocional.</label>
+     <label class="check"><input type="checkbox"> Explicar que VIH y sida no son equivalentes; resolver dudas sin estigma.</label>
+     <label class="check"><input type="checkbox"> Concertar vinculación pronta con clínica/servicio con experiencia en VIH.</label>
+     <label class="check"><input type="checkbox"> Valoración clínica completa, antecedentes, exploración y revisión de medicamentos.</label>
+     <label class="check"><input type="checkbox"> Solicitar/coordinar estudios basales según protocolo: carga viral, CD4, biometría, función renal/hepática y otros indicados.</label>
+     <label class="check"><input type="checkbox"> Evaluar tuberculosis, hepatitis, otras ITS, vacunación y comorbilidades conforme a guías vigentes.</label>
+     <label class="check"><input type="checkbox"> Revisar embarazo/plan reproductivo cuando aplique y plan de prevención de transmisión perinatal.</label>
+     <label class="check"><input type="checkbox"> Ofrecer valoración de TAR oportuno; selección del esquema y momento a cargo del equipo clínico.</label>
+     <label class="check"><input type="checkbox"> Identificar barreras para acudir, salud mental, apoyo social y necesidades de navegación.</label>
+     <label class="check"><input type="checkbox"> Explicar prevención, U=U (indetectable = intransmisible por vía sexual cuando se mantiene supresión viral), preservativos y PrEP para parejas cuando corresponda.</label>
+     <label class="check"><input type="checkbox"> Revisar notificación epidemiológica y obligaciones locales por personal autorizado.</label>
+    </div>
+    <div class="progress"><span id="linkProgress"></span></div><p id="linkCount" class="small">0 tareas marcadas</p>
+    <button class="action" onclick="window.print()">Imprimir / guardar como PDF</button><button class="action secondary" onclick="resetChecks('linkChecklist')">Reiniciar lista</button>
+   </section>
+
+   <section id="seguimiento" class="panel">
+    <h2>Plan de seguimiento longitudinal</h2>
+    <p class="sub">Plantilla de planificación académica. La frecuencia real se individualiza según guías, respuesta al tratamiento y situación clínica.</p>
+    <div class="grid2">
+     <div class="field"><label for="visitDate">Fecha de próxima revisión (planificada)</label><input id="visitDate" type="date"></div>
+     <div class="field"><label for="viral">Última carga viral (copias/mL; opcional)</label><input id="viral" type="number" min="0" placeholder="No registrar datos identificables"></div>
+     <div class="field"><label for="cd4">Último recuento CD4 (células/mm³; opcional)</label><input id="cd4" type="number" min="0" placeholder="Valor numérico"></div>
+     <div class="field"><label for="art">Situación del TAR</label><select id="art"><option value="">Selecciona…</option><option>Por valorar con equipo tratante</option><option>Iniciado; evaluar tolerancia y adherencia</option><option>En seguimiento estable</option><option>Interrupción / dificultad de acceso</option><option>Posible fallo virológico: requiere valoración</option></select></div>
+    </div>
+    <h3>Revisar en cada contacto</h3>
+    <div id="followChecklist">
+     <label class="check"><input type="checkbox"> Adherencia, disponibilidad de medicamentos y preferencias del paciente.</label>
+     <label class="check"><input type="checkbox"> Efectos adversos, interacciones y cambios de medicamentos.</label>
+     <label class="check"><input type="checkbox"> Resultados de carga viral y CD4 según calendario clínico.</label>
+     <label class="check"><input type="checkbox"> Síntomas nuevos, infecciones oportunistas y necesidad de atención urgente.</label>
+     <label class="check"><input type="checkbox"> Salud mental, consumo de sustancias, apoyo social y barreras de atención, preguntados sin juicio.</label>
+     <label class="check"><input type="checkbox"> Prevención y detección de ITS, salud reproductiva y vacunas indicadas.</label>
+     <label class="check"><input type="checkbox"> Plan de próxima cita y canal seguro de contacto acordado.</label>
+    </div>
+    <div class="progress"><span id="followProgress"></span></div><p id="followCount" class="small">0 tareas marcadas</p>
+    <button class="action" onclick="makeSummary()">Crear resumen de práctica</button><button class="action secondary" onclick="window.print()">Imprimir / guardar como PDF</button>
+    <div id="summary" aria-live="polite"></div>
+    <p class="small">No se almacenan los datos del formulario; al recargar la página se reinician. Evita introducir información real de pacientes.</p>
+   </section>
+
+   <section id="caso" class="panel">
+    <h2>Caso clínico de práctica</h2><span class="tag">Paciente ficticio</span>
+    <p>Una persona adulta solicita una prueba de VIH después de una exposición sexual sin barrera hace cinco días. Se encuentra estable y pregunta si un resultado no reactivo hoy descartaría infección.</p>
+    <div class="field"><label for="answer1">¿Qué prioridad tiene la exposición?</label><select id="answer1"><option value="">Selecciona…</option><option value="a">No requiere evaluación porque han pasado más de 72 horas</option><option value="b">Valorar prueba y repetirla dentro de un año en todos los casos</option><option value="c">Explicar que la PEP debe iniciarse cuanto antes y dentro de 72 h; a los cinco días, evaluar clínicamente y planificar pruebas/prevención según protocolo</option></select></div>
+    <div class="field"><label for="answer2">¿Qué significa un tamizaje reactivo?</label><select id="answer2"><option value="">Selecciona…</option><option value="a">Diagnóstico definitivo en cualquier contexto</option><option value="b">Requiere completar el algoritmo diagnóstico vigente</option><option value="c">Significa que ya tiene sida</option></select></div>
+    <div class="field"><label for="answer3">¿Qué conducta ética es correcta?</label><select id="answer3"><option value="">Selecciona…</option><option value="a">Informar a familiares sin autorización</option><option value="b">Garantizar privacidad, consentimiento, trato respetuoso y vinculación</option><option value="c">Negar atención si tiene prácticas de riesgo</option></select></div>
+    <button class="action" onclick="gradeCase()">Revisar respuestas</button><div id="caseResult" aria-live="polite"></div>
+   </section>
+
+   <section id="fuentes" class="panel">
+    <h2>Fuentes, alcance y actualización</h2>
+    <ol>
+     <li><strong>Secretaría de Salud, Dirección General de Epidemiología.</strong> <em>Manual de Procedimientos Estandarizados para la Vigilancia Epidemiológica del VIH-SIDA</em> (septiembre de 2012). Se utiliza como referencia histórica de vigilancia, notificación y conceptos operacionales; <strong>no debe asumirse como normativa vigente</strong>.</li>
+     <li><strong>NIH / HIVinfo.</strong> <em>VIH y el SIDA: Conceptos básicos</em>, revisión 28 de mayo de 2025. Resume transmisión, TAR, carga viral, U=U, prevención, PrEP/PEP y criterios generales de sida. <a href="https://hivinfo.nih.gov/es/understanding-hiv/fact-sheets/vih-y-el-sida-conceptos-basicos" target="_blank" rel="noopener">Consultar fuente</a>.</li>
+     <li><strong>GeSIDA / SEISIDA.</strong> <em>Documento informativo sobre la infección por el VIH</em> (material proporcionado). Referencia educativa sobre CD4, carga viral, TAR, consulta, cuidados y aspectos éticos/legales.</li>
+    </ol>
+    <div class="result warn"><strong>Antes de usarlo en atención real:</strong> actualiza el flujo con las normas mexicanas vigentes, los algoritmos aprobados por el laboratorio y la guía de tratamiento actual. No se incluyen esquemas farmacológicos ni criterios de notificación detallados porque deben verificarse localmente.</div>
+    <h3>Referencias adicionales para verificación</h3>
+    <ul><li><a href="https://www.gob.mx/censida" target="_blank" rel="noopener">CENSIDA — información y recursos de VIH en México</a></li><li><a href="https://www.gob.mx/salud" target="_blank" rel="noopener">Secretaría de Salud de México</a></li><li><a href="https://www.who.int/health-topics/hiv-aids" target="_blank" rel="noopener">Organización Mundial de la Salud — VIH</a></li></ul>
+   </section>
+  </main>
+ </div>
+</div>
+<footer>Material didáctico. No recolecta ni envía información. Para casos reales, consulta a profesionales responsables y protocolos vigentes. © Recurso educativo para estudiantes de medicina.</footer>
+<script>
+const tabs=[...document.querySelectorAll('nav button')];
+function go(id){tabs.forEach(b=>b.classList.toggle('active',b.dataset.tab===id));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===id));window.scrollTo({top:0,behavior:'smooth'})}
+tabs.forEach(b=>b.addEventListener('click',()=>go(b.dataset.tab)));
+function show(id,msg,type=''){document.getElementById(id).innerHTML=`<div class="result ${type}">${msg}</div>`}
+function evaluateScreen(){
+ const ex=document.getElementById('exposure').value, consent=document.getElementById('consent').checked, privacy=document.getElementById('privacy').checked;
+ if(ex==='72'){show('screenResult','<strong>Prioridad:</strong> acudir ahora a un servicio clínico para valorar PEP. Debe iniciarse lo antes posible y no después de 72 horas; la decisión y el seguimiento corresponden al personal clínico. No esperes al resultado de una prueba para solicitar valoración.','danger');return}
+ if(!consent||!privacy){show('screenResult','Antes de continuar, completa consentimiento y privacidad: explica la prueba, sus límites, cómo se entregará el resultado y las opciones de la persona. Sigue la normativa local.','warn');return}
+ if(ex==='old'){show('screenResult','Valorar la exposición y ofrecer prueba según el algoritmo vigente. La PEP habitualmente no se inicia después de 72 horas; consulta al servicio clínico sobre pruebas, seguimiento y prevención.','warn');return}
+ if(ex==='unknown'){show('screenResult','Aclara fecha y tipo de exposición con preguntas neutrales. Si pudiera estar dentro de las últimas 72 horas, deriva urgentemente para valoración de PEP.','warn');return}
+ show('screenResult','Procede con consejería y prueba informada según indicación y protocolo local. Explica periodo de ventana, plan de comunicación y qué ocurrirá ante un resultado reactivo, no reactivo o inválido.');
+}
+function interpretTest(){
+ const t=document.getElementById('test').value,w=document.getElementById('window').value,c=document.getElementById('confirm').value;
+ if(!t||!w){show('testResult','Selecciona el resultado y si existe posible exposición reciente.','warn');return}
+ if(t==='invalid'){show('testResult','Resultado inválido/indeterminado: no clasificar el estado serológico. Repetir o continuar evaluación con el laboratorio según el algoritmo vigente.','warn');return}
+ if(t==='nonreactive'&&w==='yes'){show('testResult','No reactivo con exposición reciente: no descarta necesariamente infección. Valorar tipo de prueba, fecha de exposición y posible infección aguda; coordinar pruebas/repetición según protocolo.','warn');return}
+ if(t==='nonreactive'){show('testResult','No reactivo: interpretar según tipo de prueba y periodo de ventana. Si no hay sospecha de infección reciente, ofrecer prevención y explicar cuándo repetir según protocolo y nuevas exposiciones.');return}
+ if(!c||c===''){show('testResult','Tamizaje reactivo: completa el algoritmo diagnóstico aprobado por el laboratorio; no comunicarlo como diagnóstico confirmado hasta cumplir criterios.','warn');return}
+ if(c==='positive'){show('testResult','El escenario indica que se cumplieron criterios de confirmación según el algoritmo vigente. Comunica el resultado en privado y facilita vinculación pronta a atención integral, TAR y evaluación basal.');return}
+ if(c==='negative'){show('testResult','Resultados discordantes: no concluir infección confirmada. Contactar al laboratorio/servicio experto y realizar pruebas adicionales o repetición según algoritmo vigente.','warn');return}
+ show('testResult','Resultado indeterminado: explicar que aún no es concluyente y coordinar seguimiento/pruebas adicionales con laboratorio y equipo clínico.','warn')
+}
+function resetChecks(id){document.querySelectorAll('#'+id+' input[type=checkbox]').forEach(c=>c.checked=false);updateCounts()}
+function updateCounts(){[['linkChecklist','linkProgress','linkCount'],['followChecklist','followProgress','followCount']].forEach(([box,bar,label])=>{let all=[...document.querySelectorAll('#'+box+' input[type=checkbox]')],n=all.filter(c=>c.checked).length;document.getElementById(bar).style.width=(all.length?n/all.length*100:0)+'%';document.getElementById(label).textContent=`${n} de ${all.length} tareas marcadas`})}
+document.querySelectorAll('#linkChecklist input,#followChecklist input').forEach(c=>c.addEventListener('change',updateCounts));updateCounts();
+function makeSummary(){
+ const date=document.getElementById('visitDate').value||'No definida',viral=document.getElementById('viral').value||'No registrado',cd4=document.getElementById('cd4').value||'No registrado',art=document.getElementById('art').value||'No especificado';
+ const checked=[...document.querySelectorAll('#followChecklist input')].filter(c=>c.checked).length,total=document.querySelectorAll('#followChecklist input').length;
+ show('summary',`<strong>Resumen educativo (sin identificadores)</strong><br>Próxima revisión planificada: ${date}<br>Carga viral registrada para el ejercicio: ${viral}<br>CD4 registrado para el ejercicio: ${cd4}<br>Situación de TAR: ${art}<br>Lista de seguimiento: ${checked}/${total} tareas revisadas.<br><strong>Pendiente:</strong> confirmar el plan con el equipo clínico y las guías vigentes. No se guarda ni se envía este resumen.`);
+}
+function gradeCase(){
+ const a=document.getElementById('answer1').value,b=document.getElementById('answer2').value,c=document.getElementById('answer3').value;
+ if(!a||!b||!c){show('caseResult','Responde las tres preguntas antes de revisar.','warn');return}
+ let score=(a==='c')+(b==='b')+(c==='b');
+ show('caseResult',`Resultado: ${score}/3.<br>1. Correcta: C. A los cinco días ya pasó la ventana habitual para iniciar PEP; se requiere evaluación clínica y plan de pruebas/prevención, no ignorar la exposición.<br>2. Correcta: B. Un tamizaje reactivo debe seguir el algoritmo vigente.<br>3. Correcta: B. Privacidad, consentimiento y trato respetuoso son esenciales.`,score===3?'':'warn')
+}
+</script>
+</body>
+</html>
